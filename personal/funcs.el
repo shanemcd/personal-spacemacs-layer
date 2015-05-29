@@ -13,3 +13,7 @@
   (origin (point)))
     (shell-command-on-region beg end "seeing_is_believing" nil 'replace)
     (goto-char origin)))
+
+ (defun my-comint-init ()
+   (setq comint-process-echoes t))
+(add-hook 'comint-mode-hook 'my-comint-init)
