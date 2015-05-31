@@ -14,6 +14,14 @@
     (shell-command-on-region beg end "seeing_is_believing" nil 'replace)
     (goto-char origin)))
 
- (defun my-comint-init ()
-   (setq comint-process-echoes t))
-(add-hook 'comint-mode-hook 'my-comint-init)
+(global-set-key "\M-." 'helm-etags-select)
+
+(defadvice helm-etags-select (before c-tag-file activate)
+   "Automatically create tags file."
+   (let ((tag-file (concat default-directory "TAGS")))
+     (unless (file-exists-p tag-file)
+       (shell-command "ripper-tags -R -f TAGS"))
+     (visit-tags-table tag-file)))
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+
