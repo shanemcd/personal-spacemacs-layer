@@ -12,7 +12,7 @@
 
 (defvar personal-packages
   '(
-    minimap
+    multiple-cursors
     )
   "List of all packages to install and/or initialize. Built-in packages
 which require an initialization must be listed explicitly in the list.")
@@ -21,8 +21,8 @@ which require an initialization must be listed explicitly in the list.")
 
 ;; For each package, define a function personal/init-<package-personal>
 ;;
-(defun personal/init-minimap ()
-  (use-package minimap)
+(defun personal/init-multiple-cursors ()
+  (use-package multiple-cursors)
 )
 ;;
 ;; Often the body of an initialize function uses `use-package'
